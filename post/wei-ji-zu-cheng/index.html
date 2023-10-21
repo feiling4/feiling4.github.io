@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>微机组成 | 波粒二象性</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://feiling4.github.io/favicon.ico?v=1697871668677">
+<link rel="stylesheet" href="https://feiling4.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+title: '微机组成'
+date: 2023-10-17 15:28:30
+tags: [嵌入式,微机原理]
+如果文章内容有误，请留言
+
+本文发布在个人博客，请勿转载，如有需求，请联系作者
+博客地址：  可直接点击访问 https:/..." />
+    <meta name="keywords" content="微机原理,嵌入式" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://feiling4.github.io">
+        <img src="https://feiling4.github.io/images/avatar.png?v=1697871668677" class="site-logo">
+        <h1 class="site-title">波粒二象性</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://feiling4.github.io/tag/svohSs6o5/" class="site-nav">
+            嵌入式
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      妙，你是我进步的动力！
+-----------
+温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://feiling4.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">微机组成</h2>
+            <div class="post-date">2023-10-17</div>
+            
+            <div class="post-content" v-pre>
+              <hr>
+<p>title: '微机组成'<br>
+date: 2023-10-17 15:28:30<br>
+tags: [嵌入式,微机原理]</p>
+<p>如果文章内容有误，请留言</p>
+<blockquote>
+<p>本文发布在个人博客，请勿转载，如有需求，请联系作者<br>
+<a href="https://feiling4.github.io/">博客地址：</a>  可直接点击访问 https://feiling4.github.io/</p>
+</blockquote>
+<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%BE%AE%E6%9C%BA%E7%9A%84%E6%A6%82%E5%BF%B5">一、微机的概念</a></li>
+<li><a href="#%E4%BA%8C-%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%A1%8C%E4%B8%9A%E7%9A%84%E5%BE%AE%E6%9C%BA">二、嵌入式行业的微机</a>
+<ul>
+<li><a href="#%E5%8D%95%E7%89%87%E6%9C%BA%E6%9E%84%E6%88%90">单片机构成</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B">程序执行过程</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%BE%AE%E6%9C%BA%E7%9A%84%E6%9E%84%E6%88%90%E6%9A%82%E6%97%B6%E4%B8%8D%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3">三、微机的构成【暂时不需要了解】</a>
+<ul>
+<li><a href="#%E6%9E%84%E6%88%90">构成</a></li>
+<li><a href="#%E5%90%84%E9%83%A8%E5%88%86%E7%9A%84%E4%BD%9C%E7%94%A8">各部分的作用</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%92%8C%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91">四、和嵌入式相关的一些疑惑</a>
+<ul>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E4%B8%8B%E8%BD%BD%E5%9C%A8%E5%93%AA%E9%87%8C">程序下载在哪里</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E5%9C%A8%E5%93%AA%E9%87%8C%E6%89%A7%E8%A1%8C">程序在哪里执行</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%BB%A3%E7%A0%81%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%A4%A7%E5%B0%8F">如何查看代码占用空间的大小</a>
+<ul>
+<li><a href="#ram%E7%A9%BA%E9%97%B4">RAM空间</a></li>
+<li><a href="#rom%E7%A9%BA%E9%97%B4">ROM空间</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B">五、数据存储类型</a>
+<ul>
+<li><a href="#%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F">小端模式</a></li>
+<li><a href="#%E5%A4%A7%E7%AB%AF%E6%A8%A1%E5%BC%8F">大端模式</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E5%B7%A5%E4%BD%9C%E4%B8%AD%E6%B2%A1%E6%9C%89%E6%8E%A5%E8%A7%A6%E5%88%B0%E6%9A%82%E7%A9%BA">六、寻址方式【工作中没有接触到，暂空】</a></li>
+<li><a href="#%E4%B8%83-%E5%A3%B0%E6%98%8E">七、声明</a></li>
+</ul>
+(目录)</p>
+<h1 id="一-微机的概念">一、微机的概念</h1>
+<p>微机和微处理器的区别：<br>
+微处理器（芯片）：只是处理和控制部分<br>
+微机：是一个完整的计算机系统，有处理和控制功能。<br>
+包括：</p>
+<ul>
+<li>微处理器</li>
+<li>存储器</li>
+<li>接口适配器</li>
+<li>通用IO</li>
+</ul>
+<h1 id="二-嵌入式行业的微机">二、嵌入式行业的微机</h1>
+<h2 id="单片机构成">单片机构成</h2>
+<p>单片机：</p>
+<ul>
+<li>处理器</li>
+<li>RAM</li>
+<li>ROM</li>
+<li>I/O</li>
+<li>等电路集成在一块芯片上</li>
+</ul>
+<p>现在的单片机都是内核+外围电路，构成。内核由专门的内核公司生产，其他芯片公司，在内核上搭建他们自己需要的外围单片机电路，所以现在有很多的单片机类型：低功耗，入门级等</p>
+<h2 id="程序执行过程">程序执行过程</h2>
+<p>上电后，会先初始化堆栈空间，堆栈空间是C语言执行的前提。初始化后，在程序计数器PC（指令地址寄存器）存入第一条要执行的指令的内存地址，也就是程序的起始地址。之后每执行一条指令，程序寄存器PC值自动+1，推动整个程序的执行。如果涉及到函数跳转，条件选择等，本质上就是修改PC里面的地址值，让内核去执行对应的指令，这样程序从完全线性，变成了可选分支的线性。</p>
+<p>为什么说堆栈控制是C语言执行的前提？</p>
+<p>堆栈空间分为堆和栈。不是一个东西。具体待完善！！！！</p>
+<p>函数执行中的局部变量，函数传递的实参，形参，函数的返回地址，返回值等，都需要保存在堆栈空间内。通过程序指针PC的配合，去移动程序执行的顺序，在跳转和执行中，上一个函数的地址和状态，需要进行保存【类似中断的现场保护，但是不是完全相同】</p>
+<h1 id="三-微机的构成暂时不需要了解">三、微机的构成【暂时不需要了解】</h1>
+<h2 id="构成">构成</h2>
+<h2 id="各部分的作用">各部分的作用</h2>
+<h1 id="四-和嵌入式相关的一些疑惑">四、和嵌入式相关的一些疑惑</h1>
+<h2 id="程序下载在哪里">程序下载在哪里</h2>
+<p>程序下载到flash中，现在flash（闪存）被ROM（read only memory）替代。但是数据手册里，内存一章，还是用的flash大小，来表示。</p>
+<p><strong>ROM</strong>：只读存储器，<strong>掉电保存</strong>，所以用来保存代码。提供指令和程序<br>
+<strong>RAM</strong>：随机访问存储器，<strong>掉电不保存</strong>，访问速度快，所以用来保存相关的变量参数值。提供变量暂存的空间</p>
+<h2 id="程序在哪里执行">程序在哪里执行</h2>
+<p>程序可以运行在RAM，flash里，根据启动方式的选择不同，会有不通的启动地址。</p>
+<p>正常的模式，一般都是运行在flash中。执行过程为：</p>
+<ul>
+<li>初始化后，把第一条指令的地址，从ROM（flash）加载到程序寄存器PC中</li>
+<li>处理器从PC获取到对应指令的操作数和操作码，进行执行</li>
+<li>因为内核从flash中获取指令地址，所以可以说是执行在flash中</li>
+<li>这个执行的过程的变量保存在RAM中，保存对应的参数和变量地址等</li>
+</ul>
+<p>【感觉讲的不够透彻，需要重新修改】！！！！</p>
+<h2 id="如何查看代码占用空间的大小">如何查看代码占用空间的大小</h2>
+<p>keil和Makefile，编译完成之后，都会生成一个map文件，该文件的最后一行，就是所占用的ROM和RAM大小。</p>
+<p>下图为keil5，编译之后：<br>
+<img src="https://img-blog.csdnimg.cn/f654c1a6233a4023933b0bfe54d32d31.jpeg#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<p>RW   Size大小，就是运行时，程序需要的RAM空间。<br>
+ROM Size大小就是下载程序时，所占用的空间大小。</p>
+<h3 id="ram空间">RAM空间</h3>
+<p>RAM：随机访问存储器</p>
+<p>RAM空间大小，表示程序运行时，可以使用的空间。例如64KB，表示程序运行中，堆栈空间，函数，变量，局部变量，全局变量，数组等，运行起来之后，最大只能占用这么大，如果超出，就会内存泄漏，导致单片机复位。</p>
+<h3 id="rom空间">ROM空间</h3>
+<p>ROM：只读存储器，用来保存代码</p>
+<p>ROM大小，表示程序所能下载的大小，如512Kb，256Kb等。</p>
+<p>对应的转化关系是：</p>
+<ul>
+<li>1K   ==  1024k</li>
+<li>1Byte   ==  8bit</li>
+</ul>
+<p>此处需要做转化512Kb  = (512 / 8)KB  = 64KB。也就是说，该芯片，我最大能下64KB的bin文件。</p>
+<h1 id="五-数据存储类型">五、数据存储类型</h1>
+<p>【可以加上例子，例如哪些常用的单片机使用什么端的存储方式】！！！</p>
+<h2 id="小端模式">小端模式</h2>
+<p>高位数据在前，低位数据在后。</p>
+<h2 id="大端模式">大端模式</h2>
+<p>低位数据在前，高位数据在后。</p>
+<h1 id="六-寻址方式工作中没有接触到暂空">六、寻址方式【工作中没有接触到，暂空】</h1>
+<h1 id="七-声明">七、声明</h1>
+<p>如果文章内容有误，请留言</p>
+<blockquote>
+<p>本文发布在个人博客，请勿转载，如有需求，请联系作者<br>
+<a href="https://feiling4.github.io/">博客地址：</a>  可直接点击访问 https://feiling4.github.io/</p>
+</blockquote>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://feiling4.github.io/tag/jM8Hd5Psd/" class="tag">
+                    微机原理
+                  </a>
+                
+                  <a href="https://feiling4.github.io/tag/svohSs6o5/" class="tag">
+                    嵌入式
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://feiling4.github.io/post/qian-ru-shi-wen-zhang-gui-hua/">
+                  <h3 class="post-title">
+                    嵌入式文章规划
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '383dbd25ee6dae9dfe1c',
+        clientSecret: '45abe70d675439386e48f63511de0c3c33cfaeba',
+        repo: 'feiling4.github.io',
+        owner: 'feiling4',
+        admin: ['feiling4'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

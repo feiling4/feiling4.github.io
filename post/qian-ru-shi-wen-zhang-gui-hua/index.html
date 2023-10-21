@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>嵌入式文章规划 | 波粒二象性</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://feiling4.github.io/favicon.ico?v=1697871668677">
+<link rel="stylesheet" href="https://feiling4.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+title: '嵌入式文章规划'
+date: 2023-10-16 19:22:03
+tags: [嵌入式]
+
+前言
+一、基础部分
+
+1.1 C语言【未完成】
+1.2 C语言编写规范【完成，待完善】
+1.3 编译器【未完成】
+1.4 微机..." />
+    <meta name="keywords" content="嵌入式" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://feiling4.github.io">
+        <img src="https://feiling4.github.io/images/avatar.png?v=1697871668677" class="site-logo">
+        <h1 class="site-title">波粒二象性</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://feiling4.github.io/tag/svohSs6o5/" class="site-nav">
+            嵌入式
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      妙，你是我进步的动力！
+-----------
+温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://feiling4.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">嵌入式文章规划</h2>
+            <div class="post-date">2023-10-16</div>
+            
+            <div class="post-content" v-pre>
+              <hr>
+<p>title: '嵌入式文章规划'<br>
+date: 2023-10-16 19:22:03<br>
+tags: [嵌入式]</p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86">一、基础部分</a>
+<ul>
+<li><a href="#11-c%E8%AF%AD%E8%A8%80%E6%9C%AA%E5%AE%8C%E6%88%90">1.1 C语言【未完成】</a></li>
+<li><a href="#12-c%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E8%A7%84%E8%8C%83%E5%AE%8C%E6%88%90%E5%BE%85%E5%AE%8C%E5%96%84">1.2 C语言编写规范【完成，待完善】</a></li>
+<li><a href="#13-%E7%BC%96%E8%AF%91%E5%99%A8%E6%9C%AA%E5%AE%8C%E6%88%90">1.3 编译器【未完成】</a></li>
+<li><a href="#14-%E5%BE%AE%E6%9C%BA%E7%BB%84%E6%88%90%E5%AE%8C%E6%88%90%E5%BE%85%E5%AE%8C%E5%96%84">1.4 微机组成【完成，待完善】</a></li>
+<li><a href="#15-%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5%E6%9C%AA%E5%AE%8C%E6%88%90">1.5 常见概念【未完成】</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%9F%A5%E6%89%BE%E8%B5%84%E6%96%99">二、查找资料</a>
+<ul>
+<li><a href="#21-%E8%8A%AF%E7%89%87datasheet%E6%9F%A5%E6%89%BE">2.1 芯片datasheet查找</a></li>
+<li><a href="#22-mcu%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E6%9F%A5%E6%89%BE">2.2 MCU参考手册查找</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB">三、代码阅读</a>
+<ul>
+<li><a href="#31-%E5%A6%82%E4%BD%95%E9%98%85%E8%AF%BB%E4%BB%96%E4%BA%BA%E6%BA%90%E7%A0%81%E6%9C%AA%E5%AE%8C%E6%88%90">3.1 如何阅读他人源码【未完成】</a></li>
+<li><a href="#32-%E5%A6%82%E4%BD%95%E6%95%B4%E7%90%86%E5%90%B8%E6%94%B6%E4%BB%96%E4%BA%BA%E6%BA%90%E7%A0%81%E6%9C%89%E7%94%A8%E7%9A%84%E9%83%A8%E5%88%86%E6%9C%AA%E5%AE%8C%E6%88%90">3.2 如何整理吸收他人源码有用的部分【未完成】</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-mcu%E7%9B%B8%E5%85%B3">四、MCU相关</a>
+<ul>
+<li><a href="#41-mcu%E7%9A%84datasheet%E9%98%85%E8%AF%BB%E6%9C%AA%E5%AE%8C%E6%88%90">4.1 MCU的datasheet阅读【未完成】</a></li>
+<li><a href="#42-mcu%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C%E9%98%85%E8%AF%BB%E5%92%8C%E4%BD%BF%E7%94%A8%E6%9C%AA%E5%AE%8C%E6%88%90">4.2 MCU参考手册阅读和使用【未完成】</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91">五、项目开发</a>
+<ul>
+<li><a href="#51-%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E5%A4%B9%E5%92%8C%E5%AF%B9%E5%BA%94%E7%9A%84%E7%94%A8%E9%80%94%E6%9C%AA%E5%AE%8C%E6%88%90">5.1 项目文件夹和对应的用途【未完成】</a></li>
+<li><a href="#52-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E6%9C%AA%E5%AE%8C%E6%88%90">5.2 项目开发流程【未完成】</a></li>
+<li><a href="#53-%E9%A1%B9%E7%9B%AE%E6%97%A5%E5%BF%97%E6%A8%A1%E6%9D%BF%E6%9C%AA%E5%AE%8C%E6%88%90">5.3 项目日志模板【未完成】</a></li>
+<li><a href="#54-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E6%9C%AA%E5%AE%8C%E6%88%90">5.4 项目开发问题记录【未完成】</a></li>
+<li><a href="#55-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6%E6%8A%8A%E6%8F%A1%E6%9C%AA%E5%AE%8C%E6%88%90">5.5 项目进度把握【未完成】</a></li>
+<li><a href="#56-%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E5%BD%92%E7%BA%B3%E6%9C%AA%E5%AE%8C%E6%88%90">5.6 项目总结归纳【未完成】</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-pcb%E8%AE%BE%E8%AE%A1%E6%9C%AA%E5%AE%8C%E6%88%90">六、PCB设计【未完成】</a></li>
+</ul>
+(目录)</p>
+<h1 id="前言">前言</h1>
+<p>写这个专题的原因是：</p>
+<ol>
+<li>发现了一个叫做gridea的静态博客写作软件，想试试</li>
+<li>最近有点迷茫，索性就把自己走的路，学过的东西，做个整理</li>
+<li>试试自己新建的博客，欢迎大家访问：<a href="https://feiling4.github.io/">博客地址：</a></li>
+<li>挑战一下，能不能一个月更新完成，再用一个月去完善修改</li>
+<li>工作2年了，一直处于裸机开发，想提高自己，希望多和大家聊一聊，了解一下嵌入式行业的其他方面，例如RTOS，Linux应用开发，Linux驱动开发，还有一些开发经验等等</li>
+<li>我也希望我总结的东西，能帮助后来者，如果需要转载或者其他，可以联系我，谢谢。</li>
+</ol>
+<h1 id="一-基础部分">一、基础部分</h1>
+<h2 id="11-c语言未完成">1.1 C语言【未完成】</h2>
+<h2 id="12-c语言编写规范完成待完善">1.2 C语言编写规范【完成，待完善】</h2>
+<p><a href="https://feiling4.github.io/post/c-yu-yan-bian-xie-gui-fan/">C语言编写规范</a></p>
+<h2 id="13-编译器未完成">1.3 编译器【未完成】</h2>
+<h2 id="14-微机组成完成待完善">1.4 微机组成【完成，待完善】</h2>
+<p><a href="https://feiling4.github.io/post/wei-ji-zu-cheng/">微机组成</a></p>
+<h2 id="15-常见概念未完成">1.5 常见概念【未完成】</h2>
+<h1 id="二-查找资料">二、查找资料</h1>
+<h2 id="21-芯片datasheet查找">2.1 芯片datasheet查找</h2>
+<h2 id="22-mcu参考手册查找">2.2 MCU参考手册查找</h2>
+<h1 id="三-代码阅读">三、代码阅读</h1>
+<h2 id="31-如何阅读他人源码未完成">3.1 如何阅读他人源码【未完成】</h2>
+<h2 id="32-如何整理吸收他人源码有用的部分未完成">3.2 如何整理吸收他人源码有用的部分【未完成】</h2>
+<h1 id="四-mcu相关">四、MCU相关</h1>
+<h2 id="41-mcu的datasheet阅读未完成">4.1 MCU的datasheet阅读【未完成】</h2>
+<h2 id="42-mcu参考手册阅读和使用未完成">4.2 MCU参考手册阅读和使用【未完成】</h2>
+<h1 id="五-项目开发">五、项目开发</h1>
+<h2 id="51-项目文件夹和对应的用途未完成">5.1 项目文件夹和对应的用途【未完成】</h2>
+<h2 id="52-项目开发流程未完成">5.2 项目开发流程【未完成】</h2>
+<h2 id="53-项目日志模板未完成">5.3 项目日志模板【未完成】</h2>
+<h2 id="54-项目开发问题记录未完成">5.4 项目开发问题记录【未完成】</h2>
+<h2 id="55-项目进度把握未完成">5.5 项目进度把握【未完成】</h2>
+<h2 id="56-项目总结归纳未完成">5.6 项目总结归纳【未完成】</h2>
+<h1 id="六-pcb设计未完成">六、PCB设计【未完成】</h1>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?cb0e797a461f8a2fbd655645afbf4a55";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://feiling4.github.io/tag/svohSs6o5/" class="tag">
+                    嵌入式
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '383dbd25ee6dae9dfe1c',
+        clientSecret: '45abe70d675439386e48f63511de0c3c33cfaeba',
+        repo: 'feiling4.github.io',
+        owner: 'feiling4',
+        admin: ['feiling4'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

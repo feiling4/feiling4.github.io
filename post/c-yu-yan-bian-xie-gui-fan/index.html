@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>C语言编写规范 | 波粒二象性</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://feiling4.github.io/favicon.ico?v=1697871668677">
+<link rel="stylesheet" href="https://feiling4.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+title: 'C语言编写规范'
+date: 2023-10-18 11:31:12
+tags: [嵌入式,C语言,规范]
+起：2023年10月18日11:45:46
+版本信息：
+V1.00    初版    2023年10月20日11:..." />
+    <meta name="keywords" content="C语言,规范,嵌入式" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://feiling4.github.io">
+        <img src="https://feiling4.github.io/images/avatar.png?v=1697871668677" class="site-logo">
+        <h1 class="site-title">波粒二象性</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://feiling4.github.io/tag/svohSs6o5/" class="site-nav">
+            嵌入式
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      妙，你是我进步的动力！
+-----------
+温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://feiling4.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">C语言编写规范</h2>
+            <div class="post-date">2023-10-18</div>
+            
+            <div class="post-content" v-pre>
+              <hr>
+<p>title: 'C语言编写规范'<br>
+date: 2023-10-18 11:31:12<br>
+tags: [嵌入式,C语言,规范]</p>
+<p>起：2023年10月18日11:45:46<br>
+版本信息：<br>
+V1.00    初版    2023年10月20日11:13:36</p>
+<p>V1.01：新增注释规则   2023年10月21日14:51:57</p>
+<p><ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E4%B8%80-%E6%96%87%E4%BB%B6%E8%A7%84%E8%8C%83">一、文件规范</a>
+<ul>
+<li><a href="#11-c%E6%96%87%E4%BB%B6%E8%A7%84%E8%8C%83">1.1 C文件规范</a></li>
+<li><a href="#12-h%E6%96%87%E4%BB%B6%E8%A7%84%E8%8C%83">1.2 H文件规范</a>
+<ul>
+<li><a href="#121-h%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84">1.2.1 H文件结构</a></li>
+<li><a href="#122-%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E8%A7%84%E8%8C%83">1.2.2  函数声明规范</a></li>
+<li><a href="#123-%E5%A4%B4%E6%96%87%E4%BB%B6%E5%BC%95%E7%94%A8%E8%A7%84%E8%8C%83">1.2.3 头文件引用规范</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%87%BD%E6%95%B0%E8%A7%84%E8%8C%83">二、函数规范</a>
+<ul>
+<li><a href="#21-%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83">2.1 函数说明注释规范</a></li>
+<li><a href="#22-%E5%87%BD%E6%95%B0%E5%90%8D%E7%A7%B0%E8%A7%84%E8%8C%83">2.2 函数名称规范</a>
+<ul>
+<li><a href="#221-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%91%BD%E5%90%8D%E6%B3%95">2.2.1 常用函数命名法</a></li>
+<li><a href="#223-%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E8%A7%84%E8%8C%83">2.2.3 我使用的规范</a></li>
+</ul>
+</li>
+<li><a href="#23-%E5%87%BD%E6%95%B0%E5%86%85%E5%8F%98%E9%87%8F%E8%A7%84%E8%8C%83">2.3 函数内变量规范</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E8%A7%84%E8%8C%83">三、全局变量规范</a></li>
+<li><a href="#%E5%9B%9B-%E7%A8%8B%E5%BA%8F%E7%BC%96%E5%86%99%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83">四、程序编写风格规范</a>
+<ul>
+<li><a href="#41-%E7%BC%A9%E8%BF%9B%E8%A7%84%E8%8C%83">4.1 缩进规范</a></li>
+<li><a href="#42-%E7%A9%BA%E8%A1%8C%E8%A7%84%E8%8C%83">4.2 空行规范</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83">五、注释规范</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A">代码注释</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E7%96%91%E6%83%91%E5%BE%85%E8%A7%A3">六、疑惑，待解</a></li>
+</ul>
+(目录)</p>
+<h1 id="前言">前言</h1>
+<p>实话实说，我目前这一点，做的不是很好，经常随心所欲的命名函数和中间变量。<br>
+因此，借着这次总结，好好规范一下自己。</p>
+<h1 id="一-文件规范">一、文件规范</h1>
+<h2 id="11-c文件规范">1.1 C文件规范</h2>
+<p>一个c文件，只对一个驱动或者一个功能，不做混用。并且，底层和应用层一定要分开。<br>
+例如，SPI驱动的OLED屏幕。SPI驱动封装为一个c文件，OLED的应用驱动封装为一个C文件，这样可以保证移植的灵活性，底层改变，但是函数接口没有变化，我就只需要改变底层驱动函数内部，和OLED驱动文件没有关系。<br>
+或者OLED驱动需要新增一个具体功能，只需要新增就好，不会改动到SPI。</p>
+<p>特别是：因为SPI驱动可以驱动很多设备，可以在很多项目上使用，可以直接把SPI的驱动文件移植到新项目上，不需要去删除OLED 屏幕驱动的部分。</p>
+<p>另外：确实也有看见把应用部分和底层驱动封装在同一个C文件内的，目前是遇到过一次，是墨水屏驱动，因为使用的是模拟的SPI通讯，所以就封装在同一个文件内，方便使用者直接改引脚，去做模拟通讯，省去了驱动部分的移植。</p>
+<h2 id="12-h文件规范">1.2 H文件规范</h2>
+<h3 id="121-h文件结构">1.2.1 H文件结构</h3>
+<p>H文件的结构说明如下：</p>
+<ul>
+<li>文件说明注释，作者信息</li>
+<li>#ifndef  _xxx_H</li>
+<li>#define _xxx_H</li>
+<li>引用相对应/需要的头文件</li>
+<li>#define    变量</li>
+<li>枚举  enum</li>
+<li>结构体</li>
+<li>变量/全局变量声明</li>
+<li>函数声明【static】</li>
+<li>函数声明【extern】</li>
+<li>#endif</li>
+</ul>
+<h3 id="122-函数声明规范">1.2.2  函数声明规范</h3>
+<p>函数声明分为static 修饰和extern修饰。<br>
+如果只是当前的C文件使用，不对外，那用static修饰。<br>
+如果会在外部其他C文件内使用，或者main函数使用，需要使用extern修饰。</p>
+<h3 id="123-头文件引用规范">1.2.3 头文件引用规范</h3>
+<p>有两种方式：<br>
+- 第一种：每个文件只引用需要的文件<br>
+- 第二种：用一个include头文件包含项目中使用的所有头文件，其他C文件全部引用include</p>
+<p>两种其实都可以，主要是使用场景不同。每个只引用需要的文件，移植以及排查问题，能比较方便。<br>
+通过一个文件来管理，适合项目框架比较稳定的情况下，每一次只是改IO，应用层，不需要改动到结构，那么头文件也是不需要改变的，加了新外设驱动，也只是在include中添加引用。</p>
+<p>目前我是第二种用的比较多些。这样造成的问题是，单独的驱动移植的时候，需要判断一下需要的头文件是什么。除非是直接在项目工程上，直接去改成新项目，移除不需要的驱动，添加新驱动。</p>
+<h1 id="二-函数规范">二、函数规范</h1>
+<h2 id="21-函数说明注释规范">2.1 函数说明注释规范</h2>
+<p>函数需要有一个函数说明，维护好的话，可以不看具体内容或者看函数名称，就能明白这个函数的主要功能是什么，输入输出是什么。提高代码的阅读效率。</p>
+<p>我目前使用是一个小脚本，在keil中使用之后，会自动生成函数说明部分，然后按照需求，自己修改内容。默认生成的效果如下，函数名称会自己改变，作者信息可以通过改变模板文件来实现，其实整个模板都是可以改变的，只是我没有这个需求，我觉得这样目前就能满足自己的需求。</p>
+<pre><code class="language-c">/**
+  ************************************************************************** 
+  ** -------------------------------------------------------------------- **
+  ** @name          : EXTI9_5_IRQHandler
+  ** @brief         : None
+  ** @param         : None
+  ** @retval        : None
+  ** @author        : ZCC
+  ** -------------------------------------------------------------------- **
+  ** @attention     : None
+  ** -------------------------------------------------------------------- **
+  ************************************************************************** 
+**/
+</code></pre>
+<p>脚本信息可以在CSDN或者论坛或者B站等搜到，我就不放连接了，我也是从这些地方找到的，可以搜索  keil自动注释，或者keil脚本。很多这类的文章，包含很多的脚本，比如格式化对齐等，感谢“前人”的无私分享，我们这些“后人”，才能越用越方便。</p>
+<h2 id="22-函数名称规范">2.2 函数名称规范</h2>
+<h3 id="221-常用函数命名法">2.2.1 常用函数命名法</h3>
+<p>常用命名方法：<br>
+- 匈牙利命名法<br>
+- 骆驼命名法<br>
+- 帕斯卡命名法</p>
+<p>具体的，可以百度一下或者论坛找找说明</p>
+<p>简单说明：<br>
+<strong>匈牙利命名法</strong>：<br>
+主要思想是在函数，变量前，加入前缀，来增加对程序的理解<br>
+具体实现：标识符以一个或者多个小写字母作为前缀，后跟首字母大写的一个或者多个单词的组合，这个单词主要指明变量的用途</p>
+<p><strong>骆驼命名法</strong>：<br>
+混合使用大小写。<br>
+具体实现：第一个单词首字母小写，其他单词首字母大写。</p>
+<pre><code class="language-c">例如：printEmployeePaychecks()，函数名中每一个逻辑断点都有一个大写字母来标记。
+</code></pre>
+<p><strong>帕斯卡命名法</strong>：<br>
+所有单词的首字母大写。</p>
+<pre><code class="language-c">例如：DisplayInfo()和UserName都是采用了帕斯卡命名法。
+</code></pre>
+<h3 id="223-我使用的规范">2.2.3 我使用的规范</h3>
+<p>函数使用<strong>帕斯卡命名法</strong>，函数名称所有单词的首字母大写，命名使用最好能体现函数功能。</p>
+<p>函数名<br>
+<strong>设备名_操作名( )</strong>，用下划线分割小写字母</p>
+<pre><code class="language-c"> 例如：Tic_Init()   Adc_Is_Busy()   Uart_Tx_Char()
+ 例如：Tic_Init()   Adc_IsBusy()   Uart_TxChar()  【比较规范的写法】
+</code></pre>
+<h2 id="23-函数内变量规范">2.3 函数内变量规范</h2>
+<p>总的<strong>变量</strong>命名规则：<strong>函数内变量使用小写字母</strong><br>
+- 函数内的<strong>临时变量</strong>：用temp，如果有多个且特殊的，可以按照实际的需求，编写单词。<br>
+- 函数内的<strong>静态变量</strong>：static修饰的变量，用s_xxx来命名。<br>
+- 函数内的<strong>常量</strong>：使用大写字母，声明的同时用const修饰【const int XXX = 100;//也可写成：int const XXX = 100;】</p>
+<h1 id="三-全局变量规范">三、全局变量规范</h1>
+<p><strong>全局变量</strong>使用规范：<br>
+- 使用g_xxx来命名 【觉得最好是 g_文件名_xxx来命名。这样直接管理到变量是哪个文件中的定义】</p>
+<h1 id="四-程序编写风格规范">四、程序编写风格规范</h1>
+<h2 id="41-缩进规范">4.1 缩进规范</h2>
+<p>首行缩进，固定为4个空格；keil中，可以调整tap键表示的空格数。<br>
+下一级嵌套函数，再缩进4个空格。</p>
+<h2 id="42-空行规范">4.2 空行规范</h2>
+<p>空行规范：<br>
+- 变量定义和代码之间，空一行。<br>
+- 逻辑代码块之间，空一行，区分上下逻辑<br>
+- keil自带bug，文件的最后必须有一行，否则报错【居然一直没有修复】</p>
+<h1 id="五-注释规范">五、注释规范</h1>
+<h2 id="代码注释">代码注释</h2>
+<pre><code>    代码注释最大的用处是：今后阅读更加方便。
+</code></pre>
+<p>原因是：<br>
+- <strong>遗忘</strong>。写完代码的三天内，记性很好，不用看源码都能说清楚代码逻辑，超过三天，那就忘了。这时候，虽然知道函数的功能，但是和其他人battle的时候，问你具体实现过程，你就容易说错或者忘记。<br>
+- <strong>提高修改效率</strong>。根据代码块的功能做注释，可以马上定位到有异常或者需要修改的代码段。<br>
+- <strong>后期维护效率</strong>。公司级的代码，因为项目组的不同（大公司当然不一样，中小公司，都是一个软件对几个项目），后续测试和需求，往往是延迟的，等几天之后，和你说这个功能有异常，去维护的时候，需要尽快了解之前的代码执行逻辑。<br>
+- 通过函数名，返回值，参数等注释信息，确定函数功能。<br>
+- 通过函数内的代码注释去了解代码逻辑。</p>
+<h1 id="六-疑惑待解">六、疑惑，待解</h1>
+<p>如何保证自己写的代码质量呢？<br>
+有什么检查方法？<br>
+或者有什么思维方式？</p>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?cb0e797a461f8a2fbd655645afbf4a55";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://feiling4.github.io/tag/gdieLYqDL/" class="tag">
+                    C语言
+                  </a>
+                
+                  <a href="https://feiling4.github.io/tag/TXNOg2uTUQ/" class="tag">
+                    规范
+                  </a>
+                
+                  <a href="https://feiling4.github.io/tag/svohSs6o5/" class="tag">
+                    嵌入式
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://feiling4.github.io/post/wei-ji-zu-cheng/">
+                  <h3 class="post-title">
+                    微机组成
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '383dbd25ee6dae9dfe1c',
+        clientSecret: '45abe70d675439386e48f63511de0c3c33cfaeba',
+        repo: 'feiling4.github.io',
+        owner: 'feiling4',
+        admin: ['feiling4'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
